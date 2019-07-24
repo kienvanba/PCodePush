@@ -30,6 +30,7 @@ const App = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.header}>ADDED BY CODE PUSH</Text>
       <Text style={styles.text}>Hello CodePush!</Text>
       <TouchableOpacity style={styles.button} onPress={() => syncWithCodePush()}>
         <Text>Check for update.</Text>
@@ -45,6 +46,10 @@ const App = () => {
 }
 
 const styles = StyleSheet.create({
+  header: {
+    fontSize: 64,
+    fontWeight: 'bold',
+  },
   container: {
     flex: 1,
     width: '100%',
