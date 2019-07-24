@@ -6,10 +6,6 @@ import {
 } from 'react-native';
 import * as codePush from 'react-native-code-push';
 
-const codePushOption = {
-  checkFrequency: codePush.default.CheckFrequency.ON_APP_RESUME,
-}
-
 const App = () => (
   <View style={styles.container}>
     <Text style={styles.text}>Hello World!</Text>
@@ -28,4 +24,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default codePush.default(codePushOption)(App);
+export default App;
