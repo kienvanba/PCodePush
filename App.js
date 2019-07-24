@@ -12,12 +12,29 @@ const codePushOption = {
 }
 
 const App = () => {
+  const [syncStatus, setSyncStatus] = useState('');
+
+  function syncWithCodePush() {
+    CodePush.sync({
+      updateDialog: true,
+      installMode: CodePush.InstallMode.IMMEDIATE,
+    }, status => {
+      for (var key in CodePush.SyncStatus) {
+        if (status === CodePush.SyncStatus[key]) {
+          setSyncStatus(key.replace(/_/g, ' '));
+          break;
+        }
+      }
+    })
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hello CodePush!</Text>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={() => syncWithCodePush()}>
         <Text>Check for update.</Text>
       </TouchableOpacity>
+      <Text>{`Code status:\n${syncStatus}`}</Text>
     </View>
   );
 }
