@@ -7,9 +7,12 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.microsoft.codepush.react.CodePush;
 
 import java.util.Arrays;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -19,10 +22,17 @@ public class MainApplication extends Application implements ReactApplication {
       return BuildConfig.DEBUG;
     }
 
+    @Nullable
+    @Override
+    protected String getJSBundleFile() {
+      return CodePush.getJSBundleFile();
+    }
+
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+          new CodePush("NRGvw-dnnyy-BxeuJuDw0dU5HtatUfOoIWlje", MainApplication.this, BuildConfig.DEBUG)
       );
     }
 
