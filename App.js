@@ -12,7 +12,7 @@ const codePushOption = {
 
 const App = () => (
   <View style={styles.container}>
-    <Text style={styles.text}>Hello World!</Text>
+    <Text style={styles.text}>Hello CodePush!</Text>
   </View>
 );
 
