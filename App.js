@@ -1,58 +1,49 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
-import CodePush from 'react-native-code-push';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
 
-const codePushOption = {
-  checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME,
-}
+import React, {Component} from 'react';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 
-const App = () => {
-  const [logs, setLogs] = useState([`sync started at: ${new Date().getTime()}`]);
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+  android:
+    'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
 
-  function codePushSync() {
-    CodePush.sync({
-      updateDialog: true,
-      installMode: CodePush.InstallMode.IMMEDIATE,
-    }, status => {
-      for (var key in CodePush.SyncStatus) {
-        if (status === CodePush.SyncStatus[key]) {
-          setLogs([...logs, key.replace(/_/g, '')]);
-          break;
-        }
-      }
-    });
+type Props = {};
+export default class App extends Component<Props> {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Welcome to React Native!</Text>
+        <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <Text style={styles.instructions}>{instructions}</Text>
+      </View>
+    );
   }
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello CodePush ver1.0.1!</Text>
-      <TouchableOpacity style={styles.button} onPress={() => codePushSync()}>
-        <Text>Code Push</Text>
-      </TouchableOpacity>
-      <Text>{JSON.stringify(logs)}</Text>
-    </View>
-  );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
-  text: {
-    fontSize: 32,
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
   },
-  button: {
-    width: '80%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
-
-export default CodePush(codePushOption)(App);
