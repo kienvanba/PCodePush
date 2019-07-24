@@ -7,7 +7,7 @@ import {
 import * as codePush from 'react-native-code-push';
 
 const codePushOption = {
-  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  checkFrequency: codePush.default.CheckFrequency.ON_APP_RESUME,
 }
 
 const App = () => (
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default codePush(codePushOption)(App);
+export default codePush.default(codePushOption)(App);
