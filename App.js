@@ -34,7 +34,7 @@ const App = () => {
       <TouchableOpacity style={styles.button} onPress={() => syncWithCodePush()}>
         <Text>Check for update.</Text>
       </TouchableOpacity>
-      <Text>{`Code status:\n${syncStatus}`}</Text>
+      <Text>{`Code status: \n${syncStatus}`}</Text>
     </View>
   );
 }
