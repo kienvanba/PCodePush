@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import codePush from 'react-native-code-push';
+import * as codePush from 'react-native-code-push';
 
 const codePushOption = {
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
