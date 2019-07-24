@@ -12,7 +12,7 @@ const codePushOption = {
 }
 
 const App = () => {
-  const [syncStatus, setSyncStatus] = useState('');
+  const [logs, setLogs] = useState([]);
 
   function syncWithCodePush() {
     CodePush.sync({
@@ -21,7 +21,7 @@ const App = () => {
     }, status => {
       for (var key in CodePush.SyncStatus) {
         if (status === CodePush.SyncStatus[key]) {
-          setSyncStatus(key.replace(/_/g, ' '));
+          setLogs([...logs, key.replace(/_/g, ' ')]);
           break;
         }
       }
@@ -34,7 +34,12 @@ const App = () => {
       <TouchableOpacity style={styles.button} onPress={() => syncWithCodePush()}>
         <Text>Check for update.</Text>
       </TouchableOpacity>
-      <Text>{`Code status: \n${syncStatus}`}</Text>
+      <Text>Code update logging:</Text>
+      {
+        logs.map((v, i) => (
+          <Text key={i}>{v}</Text>
+        ))
+      }
     </View>
   );
 }
