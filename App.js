@@ -14,7 +14,7 @@ const codePushOption = {
 const App = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello World!</Text>
+      <Text style={styles.text}>Hello CodePush!</Text>
       <TouchableOpacity style={styles.button}>
         <Text>Check for update.</Text>
       </TouchableOpacity>
