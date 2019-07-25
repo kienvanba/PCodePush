@@ -9,6 +9,7 @@ import CodePush from 'react-native-code-push';
 
 const codePushOption = {
   checkFrequency: CodePush.CheckFrequency.ON_APP_START,
+  installMode: CodePush.InstallMode.IMMEDIATE,
 }
 
 const App = () => {
@@ -30,7 +31,6 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>ADDED BY CODE PUSH</Text>
       <Text style={styles.text}>Hello CodePush!</Text>
       <TouchableOpacity style={styles.button} onPress={() => syncWithCodePush()}>
         <Text>Check for update.</Text>
