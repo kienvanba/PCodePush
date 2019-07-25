@@ -31,7 +31,6 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Added by code push</Text>
       <Text style={styles.text}>Hello CodePush!</Text>
       <TouchableOpacity style={styles.button} onPress={() => syncWithCodePush()}>
         <Text>Check for update.</Text>
